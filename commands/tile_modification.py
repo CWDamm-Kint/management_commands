@@ -51,7 +51,6 @@ class Command(BaseCommand):
                     tile.data["3cf0a734-6ebf-11ef-8309-5b5a59d59ccc"].startswith("NW1")): 
                     change_coords = True
                     break
-                    # print("\n", vars(resource))
              
             if change_coords == True:
 
@@ -60,13 +59,8 @@ class Command(BaseCommand):
                         lat = tile.data['778b8936-6ebf-11ef-8309-5b5a59d59ccc']['features'][0]['geometry']['coordinates'][0]
                         long = tile.data['778b8936-6ebf-11ef-8309-5b5a59d59ccc']['features'][0]['geometry']['coordinates'][1]
 
-                        # print(lat, long)
-
                         tile.data['778b8936-6ebf-11ef-8309-5b5a59d59ccc']['features'][0]['geometry']['coordinates'][0] = long
                         tile.data['778b8936-6ebf-11ef-8309-5b5a59d59ccc']['features'][0]['geometry']['coordinates'][1] = lat
-
-                        # print(tile.data['778b8936-6ebf-11ef-8309-5b5a59d59ccc']['features'][0]['geometry']['coordinates'][0],
-                        #       tile.data['778b8936-6ebf-11ef-8309-5b5a59d59ccc']['features'][0]['geometry']['coordinates'][1])
                 
                         tile.save()
 
