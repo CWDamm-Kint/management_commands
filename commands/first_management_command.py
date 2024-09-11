@@ -3,8 +3,6 @@ from arches.app.models.resource import Resource
 from arches.app.models.tile import Tile
 from arches.app.models.models import Value
 
-import json
-
 class Command(BaseCommand):
 
     def handle(self, *args, **options):
