@@ -50,24 +50,27 @@ class Command(BaseCommand):
                 if (str(tile.nodegroup_id) == '29e54f3c-6ebf-11ef-8309-5b5a59d59ccc' and 
                     tile.data["3cf0a734-6ebf-11ef-8309-5b5a59d59ccc"].startswith("NW1")): 
                     change_coords = True
-                    # print("\n", vars(resource))          
+                    break
+                    # print("\n", vars(resource))
+             
+            if change_coords == True:
 
-            for tile in resource.tiles: 
-                if str(tile.nodegroup_id) == '08803190-6ebf-11ef-8309-5b5a59d59ccc' and change_coords == True:
-                    lat = tile.data['778b8936-6ebf-11ef-8309-5b5a59d59ccc']['features'][0]['geometry']['coordinates'][0]
-                    long = tile.data['778b8936-6ebf-11ef-8309-5b5a59d59ccc']['features'][0]['geometry']['coordinates'][1]
+                for tile in resource.tiles: 
+                    if str(tile.nodegroup_id) == '08803190-6ebf-11ef-8309-5b5a59d59ccc':
+                        lat = tile.data['778b8936-6ebf-11ef-8309-5b5a59d59ccc']['features'][0]['geometry']['coordinates'][0]
+                        long = tile.data['778b8936-6ebf-11ef-8309-5b5a59d59ccc']['features'][0]['geometry']['coordinates'][1]
 
-                    # print(lat, long)
+                        # print(lat, long)
 
-                    tile.data['778b8936-6ebf-11ef-8309-5b5a59d59ccc']['features'][0]['geometry']['coordinates'][0] = long
-                    tile.data['778b8936-6ebf-11ef-8309-5b5a59d59ccc']['features'][0]['geometry']['coordinates'][1] = lat
+                        tile.data['778b8936-6ebf-11ef-8309-5b5a59d59ccc']['features'][0]['geometry']['coordinates'][0] = long
+                        tile.data['778b8936-6ebf-11ef-8309-5b5a59d59ccc']['features'][0]['geometry']['coordinates'][1] = lat
 
-                    # print(tile.data['778b8936-6ebf-11ef-8309-5b5a59d59ccc']['features'][0]['geometry']['coordinates'][0],
-                    #       tile.data['778b8936-6ebf-11ef-8309-5b5a59d59ccc']['features'][0]['geometry']['coordinates'][1])
-            
-                    tile.save()
+                        # print(tile.data['778b8936-6ebf-11ef-8309-5b5a59d59ccc']['features'][0]['geometry']['coordinates'][0],
+                        #       tile.data['778b8936-6ebf-11ef-8309-5b5a59d59ccc']['features'][0]['geometry']['coordinates'][1])
+                
+                        tile.save()
 
-            for tile in resource.tiles: 
-                if str(tile.nodegroup_id) == '08803190-6ebf-11ef-8309-5b5a59d59ccc' and change_coords == True:
-                    print(tile.data['778b8936-6ebf-11ef-8309-5b5a59d59ccc']['features'][0]['geometry']['coordinates'][0],
-                          tile.data['778b8936-6ebf-11ef-8309-5b5a59d59ccc']['features'][0]['geometry']['coordinates'][1])
+                for tile in resource.tiles: 
+                    if str(tile.nodegroup_id) == '08803190-6ebf-11ef-8309-5b5a59d59ccc' and change_coords == True:
+                        print(tile.data['778b8936-6ebf-11ef-8309-5b5a59d59ccc']['features'][0]['geometry']['coordinates'][0],
+                            tile.data['778b8936-6ebf-11ef-8309-5b5a59d59ccc']['features'][0]['geometry']['coordinates'][1])
